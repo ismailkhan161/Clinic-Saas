@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { getUsers, getUser, updateUser, deleteUser, deactivateUser, activateUser, updatePlan, getDoctors } = require('../controllers/userController');
-const { protect, authorize } = require('../middleware/auth');
+const { protect, authorize } = require('../middleware/Auth');
 
 router.use(protect);
 

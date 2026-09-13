@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { adminAnalytics, doctorAnalytics } = require('../controllers/analyticsController');
-const { protect, authorize } = require('../middleware/auth');
+const { protect, authorize } = require('../middleware/Auth');
 router.use(protect);
 router.get('/admin', authorize('admin'), adminAnalytics);
 router.get('/doctor', authorize('doctor'), doctorAnalytics);

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { symptomChecker, explainPrescription, riskFlagging, getTokenBalance, addTokens } = require('../controllers/aiController');
-const { protect, authorize } = require('../middleware/auth');
+const { protect, authorize } = require('../middleware/Auth');
 
 router.use(protect);
 router.get('/tokens', getTokenBalance);

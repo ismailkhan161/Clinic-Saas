@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { createAppointment, getAppointments, getAppointment, updateAppointment, cancelAppointment, getDoctorSchedule } = require('../controllers/appointmentController');
-const { protect, authorize } = require('../middleware/auth');
+const { protect, authorize } = require('../middleware/Auth');
 router.use(protect);
 router.get('/schedule', getDoctorSchedule);
 router.route('/').get(getAppointments).post(authorize('admin', 'receptionist', 'patient'), createAppointment);
