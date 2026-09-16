@@ -7,7 +7,7 @@ require('dotenv').config();
 
 
 const connectDB = require('./config/Db');
-const errorHandler = require('./middleware/errorhandler.js');
+const errorHandler = require('./middleware/errorhandler.Js');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -22,7 +22,16 @@ const app = express();
 connectDB();
 
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL || '*', credentials: true }));
+const cors = require('cors');
+
+app.use(cors({
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+app.options('*', cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
